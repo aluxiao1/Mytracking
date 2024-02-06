@@ -1,0 +1,36 @@
+MARK
+STA=(　)
+END=(　)
+;
+BEND
+  B = (L = 1.7, ANGLE = 0.78539815)
+  B01 = (L=0.2, K0=0.001)
+;
+QUAD
+  QF1 = (L = 0.3, K1 = 0.7832) 
+  QD1 = (L = 0.3, K1 = -0.9470)
+  QF3 = (L = 0.3,  K1 = 1.1449)
+;
+DRIFT
+  DL = (L=2.46625)
+  DLK = (L=2.26625)
+  DQ1 =(L=0.35)
+  DBQ1 = (L=0.40)
+  DBQ2 = (L=0.60)
+  DQ2  = (L=0.40)
+  DM = (L=2.3)
+  DM1 = (L=0.8)
+;
+
+LINE
+!  CELL1=( DL, QF1, DQ1, QD1, DBQ1)
+!  HSUP=(STA, DL, QF1, DQ1, QD1, DBQ1, B)
+!  HSUP = (B)
+HSUP = (STA, DL, QF1, DQ1, QD1, DBQ1, B, DM1, QF3, DM1, B, DBQ1, QD1, DQ1, QF1, DL, END )
+!  HSUP1= (STA, B01, DLK, QF1, DQ1, QD1, DBQ1, B, DM1, QF3, DM1, B, DBQ1, QD1, DQ1, QF1, DL )
+RING=(HSUP,HSUP,HSUP,HSUP)
+;
+
+USE HSUP;
+
+
